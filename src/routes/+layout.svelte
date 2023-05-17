@@ -10,12 +10,19 @@
 	import '@fontsource/inter/700.css';
 	import '@fontsource/inter/800.css';
 	import '@fontsource/inter/900.css';
+
+	export let data;
 </script>
 
-<nav class="px-4 py-2 border-b border-b-zinc-200">
-	<a class="text-xl font-bold hover:underline" href="/">Pluck.io</a>
-</nav>
+<main class="flex min-h-screen flex-col">
+	<nav class="flex justify-between border-b border-b-zinc-200 px-4 py-2">
+		<a class="text-xl font-bold hover:underline" href="/">Pluck.io</a>
+		{#if data.account}
+			<a class="link" href="/log-out">Log-out</a>
+		{/if}
+	</nav>
 
-<div class="max-w-5xl mx-auto mt-4">
-	<slot />
-</div>
+	<div class="mx-auto flex max-w-5xl grow flex-col py-4">
+		<slot />
+	</div>
+</main>
