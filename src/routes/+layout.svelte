@@ -29,7 +29,7 @@
 	{#if data.account}
 		<div class="flex grow overflow-hidden">
 			<aside class="hidden max-w-[12rem] grow lg:block">
-				<ul class="flex h-full  flex-col gap-2 border-r border-r-zinc-200 px-4 py-4">
+				<ul class="flex h-full flex-col gap-2 border-r border-r-zinc-200 px-4 py-4">
 					<li>Home</li>
 					<li>Your photos</li>
 				</ul>

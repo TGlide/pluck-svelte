@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Dialog } from 'radix-svelte';
 
-	export let data;
 	let open = true;
 </script>
 

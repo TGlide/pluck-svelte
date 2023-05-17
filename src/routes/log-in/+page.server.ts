@@ -1,4 +1,5 @@
 import { login } from '$lib/appwrite/account.server.js';
+import { getErrorMsg } from '$lib/helpers/error.js';
 import { fail } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms/server';
 import { z } from 'zod';
@@ -25,7 +26,7 @@ export const actions = {
 			const { email, password } = form.data;
 			await login({ email, password, cookies });
 		} catch (e) {
-			return message(form, e);
+			return message(form, getErrorMsg(e));
 		}
 
 		return { form };
