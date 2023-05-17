@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Dialog } from 'radix-svelte';
 
-	let open = true;
+	let open = false;
 </script>
 
 <h1 class="text-3xl font-bold">Feed</h1>
