@@ -7,6 +7,9 @@ dependencies:
   appwrite:
     specifier: ^11.0.0
     version: 11.0.0
+  radix-svelte:
+    specifier: ^0.5.0
+    version: 0.5.0(svelte@3.54.0)
   set-cookie-parser:
     specifier: ^2.6.0
     version: 2.6.0
@@ -30,6 +33,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.23)
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
   eslint:
     specifier: ^8.28.0
     version: 8.28.0
@@ -66,6 +72,9 @@ devDependencies:
   sveltekit-superforms:
     specifier: ^0.8.6
     version: 0.8.6(@sveltejs/kit@1.5.0)(svelte@3.54.0)(zod@3.21.4)
+  tailwind-merge:
+    specifier: ^1.12.0
+    version: 1.12.0
   tailwindcss:
     specifier: ^3.3.1
     version: 3.3.1(postcss@8.4.23)
@@ -319,6 +328,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@floating-ui/core@1.2.6:
+    resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
+    dev: false
+
+  /@floating-ui/dom@1.2.8:
+    resolution: {integrity: sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==}
+    dependencies:
+      '@floating-ui/core': 1.2.6
+    dev: false
 
   /@fontsource/inter@4.5.15:
     resolution: {integrity: sha512-FzleM9AxZQK2nqsTDtBiY0PMEVWvnKnuu2i09+p6DHvrHsuucoV2j0tmw+kAT3L4hvsLdAIDv6MdGehsPIdT+Q==}
@@ -818,6 +837,11 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: true
 
   /color-convert@2.0.1:
@@ -2077,6 +2101,16 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /radix-svelte@0.5.0(svelte@3.54.0):
+    resolution: {integrity: sha512-nlwHfEZxMeXPKDfhg9xVhSQbNtJRsC5QsQZScGOqeP9ez1cFDOu0RO7QWERGsBZami2ogOJrohIHdqbYoseeVQ==}
+    peerDependencies:
+      svelte: ^3.58.0
+    dependencies:
+      '@floating-ui/core': 1.2.6
+      '@floating-ui/dom': 1.2.8
+      svelte: 3.54.0
+    dev: false
+
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
@@ -2416,7 +2450,6 @@ packages:
   /svelte@3.54.0:
     resolution: {integrity: sha512-tdrgeJU0hob0ZWAMoKXkhcxXA7dpTg6lZGxUeko5YqvPdJBiyRspGsCwV27kIrbrqPP2WUoSV9ca0gnLlw8YzQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /sveltekit-superforms@0.8.6(@sveltejs/kit@1.5.0)(svelte@3.54.0)(zod@3.21.4):
     resolution: {integrity: sha512-pX4nwr+xGcT/NC0IHiIQ1TFgCEWAKrX5ODq3SMVYaUayz+QikPnEOOOvhsR2+NwI1z+Khz5lVHpcx6ZG/tkuQQ==}
@@ -2428,6 +2461,10 @@ packages:
       '@sveltejs/kit': 1.5.0(svelte@3.54.0)(vite@4.3.0)
       svelte: 3.54.0
       zod: 3.21.4
+    dev: true
+
+  /tailwind-merge@1.12.0:
+    resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==}
     dev: true
 
   /tailwindcss@3.3.1(postcss@8.4.23):
