@@ -4,12 +4,14 @@
 	let open = false;
 </script>
 
-<h1 class="text-3xl font-bold">Feed</h1>
-
-<div class="mt-4 flex flex-wrap gap-4">
+<div class="mx-auto mt-4 flex max-w-lg flex-wrap gap-8">
 	{#each { length: 20 } as _}
-		<button on:click={() => (open = true)}>
-			<img src="http://placekitten.com/g/200/200" alt="cute kitten" />
+		<button on:click={() => (open = true)} class="w-full">
+			<img
+				src="http://placekitten.com/g/512/512"
+				alt="cute kitten"
+				class="w-full rounded-lg object-cover"
+			/>
 		</button>
 	{/each}
 </div>
@@ -27,7 +29,7 @@
 				<Dialog.Close class="text-lg text-amaranth-800" aria-label="Close">X</Dialog.Close>
 			</div>
 
-			<img class="mt-4 w-full" src="http://placekitten.com/g/200/200" alt="cute kitten" />
+			<img class="mt-4 w-full" src="http://placekitten.com/g/512/512" alt="cute kitten" />
 		</Dialog.Content>
 	</Dialog.Portal>
 </Dialog.Root>

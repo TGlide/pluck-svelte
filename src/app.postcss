@@ -9,8 +9,13 @@
 	}
 
 	.link {
-		@apply cursor-pointer font-semibold text-amaranth-500 underline underline-offset-2 outline-none hover:text-amaranth-400 focus:ring-2
-		focus:ring-amaranth-300 focus:ring-offset-2 active:text-amaranth-300;
+		@apply cursor-pointer rounded-sm font-semibold text-amaranth-500 underline underline-offset-2 outline-none hover:text-amaranth-400
+		focus:ring-2 focus:ring-amaranth-300 focus:ring-offset-2 active:text-amaranth-300;
+	}
+
+	.icon-btn {
+		@apply cursor-pointer rounded-md p-1 font-semibold text-amaranth-500 underline underline-offset-2 outline-none
+		hover:bg-gray-200 focus:ring-2 focus:ring-amaranth-300  active:bg-gray-100;
 	}
 
 	.required::after {

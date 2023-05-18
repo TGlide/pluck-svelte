@@ -11,6 +11,8 @@
 	import '@fontsource/inter/800.css';
 	import '@fontsource/inter/900.css';
 
+	import { LogOut, User, Search } from 'lucide-svelte';
+
 	export let data;
 </script>
 
@@ -19,30 +21,25 @@
 </svelte:head>
 
 <main class="flex h-screen flex-col overflow-hidden">
-	<nav class="flex justify-between border-b border-b-zinc-200 px-4 py-2">
+	<nav class="flex items-center justify-between border-b border-b-zinc-200 px-4 py-2">
 		<a class="text-xl font-bold hover:underline" href="/">Pluck.io</a>
 		{#if data.account}
-			<a class="link" href="/log-out">Log-out</a>
+			<input class="input hidden lg:block" type="text" placeholder="search" />
+			<div class="flex items-center gap-2">
+				<a class="icon-btn lg:hidden" href="/user">
+					<Search />
+				</a>
+				<a class="icon-btn" href="/user">
+					<User />
+				</a>
+				<a class="icon-btn" href="/log-out">
+					<LogOut />
+				</a>
+			</div>
 		{/if}
 	</nav>
 
-	{#if data.account}
-		<div class="flex grow overflow-hidden">
-			<aside class="hidden max-w-[12rem] grow lg:block">
-				<ul class="flex h-full flex-col gap-2 border-r border-r-zinc-200 px-4 py-4">
-					<li>Home</li>
-					<li>Your photos</li>
-				</ul>
-			</aside>
-			<div class="grow overflow-y-auto px-4 py-4">
-				<div class="mx-auto w-full max-w-7xl ">
-					<slot />
-				</div>
-			</div>
-		</div>
-	{:else}
-		<div class="mx-auto flex max-w-5xl grow flex-col py-4">
-			<slot />
-		</div>
-	{/if}
+	<div class="flex w-full grow flex-col overflow-y-auto px-4">
+		<slot />
+	</div>
 </main>
