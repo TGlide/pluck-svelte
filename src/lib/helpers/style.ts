@@ -8,3 +8,11 @@ import { twMerge } from 'tailwind-merge';
 export function cn(...inputs: ClassValue[]): string {
 	return twMerge(clsx(inputs));
 }
+
+export function prefix(pre: string, ...inputs: ClassValue[]): string {
+	return twMerge(
+		clsx(inputs)
+			.split(' ')
+			.map((c) => pre + c)
+	);
+}

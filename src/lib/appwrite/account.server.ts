@@ -27,7 +27,8 @@ export async function getAccount({ cookies }: GetAccountArgs) {
 
 	try {
 		return await account.get();
-	} catch {
+	} catch (e) {
+		console.error('getAccount', e);
 		return null;
 	}
 }

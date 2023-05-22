@@ -55,8 +55,7 @@
 			{/if}
 
 			<button
-				class="mt-4 self-end rounded-md bg-amaranth-600 px-3 py-1 font-semibold
-				text-white outline-none hover:bg-amaranth-700 focus:ring-2 focus:ring-amaranth-300 active:bg-amaranth-800"
+				class="mt-4 self-end btn"
 				type="submit">Submit</button
 			>
 		</form>

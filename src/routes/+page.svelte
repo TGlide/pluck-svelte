@@ -1,13 +1,11 @@
 <script lang="ts">
-	import { Avatar, Dialog } from 'radix-svelte';
-	import { Calendar } from 'lucide-svelte';
-
-	let open = false;
+	import { AspectRatio, Avatar, Dialog } from 'radix-svelte';
+	import { Calendar, X } from 'lucide-svelte';
 </script>
 
 <div class="mx-auto mt-4 flex max-w-lg flex-wrap gap-8">
 	{#each { length: 20 } as _}
-		<div>
+		<div class="w-full">
 			<div class="flex items-center justify-between">
 				<div class="flex items-center">
 					<Avatar.Root
@@ -27,35 +25,40 @@
 					<span class="ml-2 font-semibold text-amaranth-600">Thomas G. Lopes</span>
 				</div>
 				<div class="flex items-center gap-2 text-zinc-400">
-					<span class="text-sm ">2 days ago</span>
+					<span class="text-sm">2 days ago</span>
 					<Calendar class="h-5 w-5" />
 				</div>
 			</div>
-			<button on:click={() => (open = true)} class="mt-2 w-full">
-				<img
-					src="http://placekitten.com/g/512/512"
-					alt="cute kitten"
-					class="w-full rounded-lg object-cover"
-				/>
-			</button>
+			<Dialog.Root modal>
+				<Dialog.Trigger class="mt-2 w-full">
+					<AspectRatio.Root ratio={1}>
+						<img
+							src="http://placekitten.com/g/512/512"
+							alt="cute kitten"
+							class="h-full w-full rounded-xl object-cover"
+						/>
+					</AspectRatio.Root>
+				</Dialog.Trigger>
+				<Dialog.Portal>
+					<Dialog.Overlay class="fixed inset-0 bg-black/50 data-[state=open]:animate-overlayShow" />
+					<Dialog.Content
+						class="rounded-2xl bg-white px-6 py-6 shadow-lg fixed-center
+					focus:outline-none data-[state=open]:animate-contentShow"
+					>
+						<div class="flex items-center justify-between">
+							<Dialog.Title class="m-0 text-2xl font-bold text-black">Photo</Dialog.Title>
+							<Dialog.Close
+								class="rounded-full hocus:bg-amaranth-100 p-1 text-lg text-amaranth-800 outline-none"
+								aria-label="Close"
+							>
+								<X class="w-5 h-5" />
+							</Dialog.Close>
+						</div>
+
+						<img class="mt-4 w-full rounded-xl" src="http://placekitten.com/g/512/512" alt="cute kitten" />
+					</Dialog.Content>
+				</Dialog.Portal>
+			</Dialog.Root>
 		</div>
 	{/each}
 </div>
-
-<Dialog.Root modal bind:open>
-	<Dialog.Portal>
-		<Dialog.Overlay class="data-[state=open]:animate-overlayShow fixed inset-0 bg-black/50" />
-		<Dialog.Content
-			class="data-[state=open]:animate-contentShow fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] 
-		translate-x-[-50%] translate-y-[-50%] rounded-md bg-white p-[25px]
-		shadow-lg focus:outline-none"
-		>
-			<div class="flex items-center justify-between">
-				<Dialog.Title class="m-0 text-lg font-medium text-black">Photo</Dialog.Title>
-				<Dialog.Close class="text-lg text-amaranth-800" aria-label="Close">X</Dialog.Close>
-			</div>
-
-			<img class="mt-4 w-full" src="http://placekitten.com/g/512/512" alt="cute kitten" />
-		</Dialog.Content>
-	</Dialog.Portal>
-</Dialog.Root>
