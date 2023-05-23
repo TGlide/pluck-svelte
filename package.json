@@ -16,6 +16,7 @@
 		"@fontsource/inter": "^4.5.15",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
+		"@types/set-cookie-parser": "^2.4.2",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.14",
@@ -43,8 +44,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@types/set-cookie-parser": "^2.4.2",
 		"appwrite": "^11.0.0",
+		"formdata-node": "^5.0.0",
+		"node-fetch": "^3.3.1",
 		"radix-svelte": "^0.5.0",
 		"set-cookie-parser": "^2.6.0"
 	}

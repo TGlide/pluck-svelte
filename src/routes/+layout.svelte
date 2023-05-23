@@ -1,4 +1,5 @@
 <script>
+	import { enhance } from '$app/forms';
 	import Dropzone from '$lib/components/dropzone.svelte';
 	import '../app.postcss';
 
@@ -59,7 +60,7 @@
 									</Dialog.Close>
 								</div>
 
-								<Dropzone class="mt-4" name="image" />
+								<Dropzone class="mt-4" name="file" />
 
 								<button class="btn mt-4 self-end" type="submit">Upload</button>
 							</form>

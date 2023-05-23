@@ -7,8 +7,6 @@ export async function load({ locals, url }) {
 		throw redirect(307, '/');
 	}
 
-	console.log('layout load', locals.account);
-
 	return {
 		account: locals.account,
 	};

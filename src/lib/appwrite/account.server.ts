@@ -6,16 +6,15 @@ import * as setCookie from 'set-cookie-parser';
 
 export const account = new Account(client);
 
-type GetAccountArgs = {
-	cookies: Cookies;
-};
-
 function setSession(hash: string) {
 	const authCookies: Record<string, string> = {};
 	authCookies['a_session_' + PROJECT_ID] = hash;
 	client.headers['X-Fallback-Cookies'] = JSON.stringify(authCookies);
 }
 
+type GetAccountArgs = {
+	cookies: Cookies;
+};
 export async function getAccount({ cookies }: GetAccountArgs) {
 	const sessionNames = [
 		'a_session_' + PROJECT_ID.toLowerCase(),
