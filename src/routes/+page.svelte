@@ -1,10 +1,17 @@
 <script lang="ts">
-	import { AspectRatio, Avatar, Dialog } from 'radix-svelte';
-	import { Calendar, X } from 'lucide-svelte';
+	import { AspectRatio, Avatar } from 'radix-svelte';
+	import { Calendar, Image } from 'lucide-svelte';
+	import Modal, { ModalTrigger } from '$lib/components/modal.svelte';
+	import { formatDate } from '$lib/helpers/date.js';
+
+	export let data;
+	$: sortedImages = [...data.files.files].sort((a, b) => {
+		return new Date(b.$createdAt).getTime() - new Date(a.$createdAt).getTime();
+	});
 </script>
 
 <div class="mx-auto mt-4 flex max-w-lg flex-wrap gap-8">
-	{#each { length: 20 } as _}
+	{#each sortedImages as file}
 		<div class="w-full">
 			<div class="flex items-center justify-between">
 				<div class="flex items-center">
@@ -25,40 +32,32 @@
 					<span class="ml-2 font-semibold text-amaranth-600">Thomas G. Lopes</span>
 				</div>
 				<div class="flex items-center gap-2 text-zinc-400">
-					<span class="text-sm">2 days ago</span>
+					<span class="text-sm">{formatDate(file.$createdAt)}</span>
 					<Calendar class="h-5 w-5" />
 				</div>
 			</div>
-			<Dialog.Root modal>
-				<Dialog.Trigger class="mt-2 w-full">
+			<Modal class="w-[800px] max-w-[95vw]">
+				<ModalTrigger slot="trigger" class="mt-2 w-full">
+					<AspectRatio.Root ratio={1}>
+						<img src={file.src} alt="cute kitten" class="h-full w-full rounded-xl object-cover" />
+					</AspectRatio.Root>
+				</ModalTrigger>
+
+				<div class="mt-4">
 					<AspectRatio.Root ratio={1}>
 						<img
-							src="http://placekitten.com/g/512/512"
+							class="block h-full w-full rounded-xl object-cover"
+							src={file.src}
 							alt="cute kitten"
-							class="h-full w-full rounded-xl object-cover"
 						/>
 					</AspectRatio.Root>
-				</Dialog.Trigger>
-				<Dialog.Portal>
-					<Dialog.Overlay class="fixed inset-0 bg-black/50 data-[state=open]:animate-overlayShow" />
-					<Dialog.Content
-						class="rounded-2xl bg-white px-6 py-6 shadow-lg fixed-center
-					focus:outline-none data-[state=open]:animate-contentShow"
-					>
-						<div class="flex items-center justify-between">
-							<Dialog.Title class="m-0 text-2xl font-bold text-black">Photo</Dialog.Title>
-							<Dialog.Close
-								class="rounded-full hocus:bg-amaranth-100 p-1 text-lg text-amaranth-800 outline-none"
-								aria-label="Close"
-							>
-								<X class="w-5 h-5" />
-							</Dialog.Close>
-						</div>
-
-						<img class="mt-4 w-full rounded-xl" src="http://placekitten.com/g/512/512" alt="cute kitten" />
-					</Dialog.Content>
-				</Dialog.Portal>
-			</Dialog.Root>
+				</div>
+			</Modal>
+		</div>
+	{:else}
+		<div class="mt-16 flex flex-col items-center text-zinc-500">
+			<Image class="square-16" />
+			<p class="mt-4 text-center text-lg font-semibold">No images to show</p>
 		</div>
 	{/each}
 </div>

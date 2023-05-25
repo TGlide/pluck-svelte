@@ -24,6 +24,7 @@ module.exports = {
 					950: '#4b0621',
 				},
 			},
+
 			keyframes: {
 				overlayShow: {
 					from: { opacity: '0' },
@@ -60,6 +61,19 @@ module.exports = {
 		}),
 		plugin(function ({ addVariant }) {
 			addVariant('hocus', ['&:hover', '&:focus']);
+		}),
+		plugin(function ({ matchUtilities, theme }) {
+			matchUtilities(
+				{
+					square: (value) => {
+						return {
+							width: value,
+							height: value,
+						};
+					},
+				},
+				{ values: theme('spacing') }
+			);
 		}),
 	],
 };

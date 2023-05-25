@@ -7,7 +7,7 @@ import { FormData, File } from 'formdata-node';
 export const storage = new Storage(client);
 
 export const uploadFile = async (blob: Blob) => {
-	const path = '/storage/buckets/{bucketId}/files'.replace('{bucketId}', BUCKET_ID);
+	const path = `/storage/buckets/${BUCKET_ID}/files`;
 	const uri = new URL(ENDPOINT + path);
 
 	const formData = new FormData();
@@ -15,7 +15,7 @@ export const uploadFile = async (blob: Blob) => {
 	formData.set('file', file);
 	formData.set('fileId', ID.unique());
 
-	return await fetch(uri.toString(), {
+	const res = await fetch(uri.toString(), {
 		method: 'post',
 		headers: {
 			...client.headers,
@@ -24,4 +24,19 @@ export const uploadFile = async (blob: Blob) => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		body: formData as any,
 	});
+
+	console.log(res);
+
+	return res;
+};
+
+export const listFiles = async () => {
+	const files = await storage.listFiles(BUCKET_ID);
+	return {
+		...files,
+		files: files.files.map((file) => ({
+			...file,
+			src: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view?project=${PROJECT_ID}`,
+		})),
+	};
 };
