@@ -10,7 +10,7 @@
 	});
 </script>
 
-<div class="mx-auto mt-4 flex max-w-lg flex-wrap gap-8">
+<div class="mx-auto mt-4 flex w-full max-w-lg flex-wrap gap-8">
 	{#each sortedImages as file}
 		<div class="w-full">
 			<div class="flex items-center justify-between">
@@ -39,7 +39,7 @@
 			<Modal class="w-[800px] max-w-[95vw]">
 				<ModalTrigger slot="trigger" class="mt-2 w-full">
 					<AspectRatio.Root ratio={1}>
-						<img src={file.src} alt="cute kitten" class="h-full w-full rounded-xl object-cover" />
+						<img src={file.src} alt="add alt here" class="h-full w-full rounded-xl object-cover" />
 					</AspectRatio.Root>
 				</ModalTrigger>
 
@@ -48,14 +48,14 @@
 						<img
 							class="block h-full w-full rounded-xl object-cover"
 							src={file.src}
-							alt="cute kitten"
+							alt="add alt here"
 						/>
 					</AspectRatio.Root>
 				</div>
 			</Modal>
 		</div>
 	{:else}
-		<div class="mt-16 flex flex-col items-center text-zinc-500">
+		<div class="mt-16 flex flex-col mx-auto items-center justify-center text-zinc-500">
 			<Image class="square-16" />
 			<p class="mt-4 text-center text-lg font-semibold">No images to show</p>
 		</div>

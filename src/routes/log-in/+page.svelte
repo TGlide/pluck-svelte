@@ -2,7 +2,6 @@
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data;
-
 	const { form, errors, constraints, enhance, message } = superForm(data.form);
 </script>
 
@@ -13,7 +12,7 @@
 
 		<form
 			method="POST"
-			class="mt-8 flex min-w-[400px]  flex-col gap-1 rounded-lg border border-zinc-200 p-6 shadow-sm"
+			class="mt-8 flex min-w-[400px] flex-col gap-1 rounded-lg border border-zinc-200 p-6 shadow-sm"
 			use:enhance
 		>
 			<h3 class="text-2xl font-semibold">Log in</h3>
@@ -44,10 +43,7 @@
 				<p class="mt-2 text-center text-sm text-red-500">{$message}</p>
 			{/if}
 
-			<button
-				class="mt-4 self-end btn"
-				type="submit">Submit</button
-			>
+			<button class="btn mt-4 self-end" type="submit">Submit</button>
 		</form>
 
 		<p class="mx-auto mt-4 block text-center text-zinc-600">

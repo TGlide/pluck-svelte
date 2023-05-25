@@ -29,11 +29,11 @@
 	<nav class="flex items-center justify-between border-b border-b-zinc-200 px-4 py-2">
 		<a class="text-xl font-bold hover:underline" href="/">Pluck.io</a>
 		{#if data.account}
-			<input class="input hidden lg:block" type="text" placeholder="search" />
+			<!-- <input class="input hidden lg:block" type="text" placeholder="search" /> -->
 			<div class="flex items-center gap-2">
-				<a class="icon-btn lg:hidden" href="/user">
+				<!-- <a class="icon-btn lg:hidden" href="/user">
 					<Search />
-				</a>
+				</a> -->
 				<Modal bind:open={uploadOpen} title="Upload">
 					<ModalTrigger slot="trigger" class="icon-btn">
 						<Upload />
@@ -61,9 +61,9 @@
 					</form>
 				</Modal>
 
-				<a class="icon-btn" href="/user">
+				<!-- <a class="icon-btn" href="/user">
 					<User />
-				</a>
+				</a> -->
 				<a class="icon-btn" href="/log-out">
 					<LogOut />
 				</a>
